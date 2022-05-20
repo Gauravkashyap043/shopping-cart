@@ -11,6 +11,7 @@ import {
   BrowserRouter,
   // Switch
 } from "react-router-dom";
+import ProductDetails from "./components/ProductDetails";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home /> }/>
             <Route  path="/product" element={<Product />}/>
+            <Route  path="/product/:id" element={<ProductDetails />}/>
             <Route  path="/about" element={<About />}/>
             <Route  path="/contact" element={<Contact />}/>
           
