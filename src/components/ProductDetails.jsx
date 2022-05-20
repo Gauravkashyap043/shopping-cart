@@ -1,12 +1,22 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useParams } from 'react-router';
 import DATA from "../Data"
 
 const ProductDetails = () => {
+    const [cartBtn,setCartBtn] = useState("Add to Cart")
     const proId = useParams();
     const proDetails = DATA.filter(x=>x.id ==proId.id);
     const product = proDetails[0]
     console.log(product)
+
+    const handleCart = (product) => {
+        if(cartBtn === "Add to Cart") {
+            setCartBtn("Remove from Cart")
+        } else{
+            setCartBtn("Add to Cart")
+        }
+    }
+
   return (
     <>
     <div className="container my-5 py-3">
@@ -20,7 +30,7 @@ const ProductDetails = () => {
                 
                 <h2 className="my-4">Price: ${product.price}</h2>
                 <p className='lead'>{product.description}</p>
-                <button className="btn btn-outline-primary">Add to Cart</button>
+                <button onClick={()=>handleCart(product)} className="btn btn-outline-primary">{cartBtn}</button>
             </div>
         </div>
     </div>
